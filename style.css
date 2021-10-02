@@ -1,0 +1,28 @@
+
+*{
+    box-sizing:border-box;
+    font-family: "Gotham Rounded", sans-serif;
+    font-weight: normal;
+}
+
+.calculator{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4,5em);
+}
+
+.output{
+    background-color: rgb(110, 104, 104);
+}
+
+body{
+    background: linear-gradient(to right,rgb(52, 178, 201), rgb(230, 167, 73));
+}
+
+.calculator > button{
+    background: orange;
+    outline: none;
+    font-size: 2rem;
+}
