@@ -8,6 +8,8 @@ const prevTextElement = document.querySelector('[data-prev]')
 const equalsButton = document.querySelector('[data-equals]')
 
 class Calculator{
+
+
     constructor(currentTextElement, prevTextElement){
         this.currentTextElement = currentTextElement
         this.prevTextElement = prevTextElement
@@ -62,7 +64,16 @@ class Calculator{
         this.currentOperand = result
         this.prevOperand = ''
         this.operation = undefined
+      
+        
+       
     }
+
+     answer(){
+        this.currentOperand = this.prevOperand
+    }
+
+    
 
     appendNumber(number){
         if(number === '.' && this.currentOperand.includes('.')) return
@@ -110,5 +121,10 @@ clearButton.addEventListener('click', button =>{
 
 delButton.addEventListener('click', button =>{
     calc.delete()
+    calc.updateDisplay()
+})
+
+ansButton.addEventListener('click', button =>{
+    calc.answer()
     calc.updateDisplay()
 })
