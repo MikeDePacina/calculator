@@ -15,33 +15,68 @@ class Calculator{
     }
 
     clear(){
-        this.currentTextElement = ''
-        this.prevTextElement = ''
+        this.currentOperand = ''
+        this.prevOperand = ''
+        this.operation = undefined
     }
 
     delete(){
-        this.currentTextElement = this.currentTextElement.toString().slice(0,-1)
+        this.currentOperand = this.currentOperand.toString().slice(0,-1)
     }
 
     updateDisplay(){
-        currentTextElement.innerText = this.currentTextElement
-        prevTextElement.innerText = this.prevTextElement
+        this.currentTextElement.innerText = this.currentOperand
+        if(this.operation != null){
+            this.prevTextElement.innerText = `${this.prevOperand} ${this.operation}`
+        }
+        else 
+            this.prevTextElement.innerText = ''
     }
 
     compute(){
+        let result
+        const prev = parseFloat(this.prevOperand)
+        const curr = parseFloat(this.currentOperand)
+        if(isNaN(curr) || isNaN(prev)) return
+        switch(this.operation){
+            case '+':
+                result = prev + curr
+                break
+            case '-':
+                result = prev - curr
+                break
+            
+            case '×':
+                result = prev * curr
+                break
+            case '÷':
+                result = prev / curr
+                break
+            case '^':
+                result = Math.pow(prev, curr)
+                break
+            default:
+                return
 
+        }
+        this.currentOperand = result
+        this.prevOperand = ''
+        this.operation = undefined
     }
 
     appendNumber(number){
-        if(number === '.' && this.currentTextElement.includes('.')) return
-        this.currentTextElement = this.currentTextElement.toString() + number.toString()
+        if(number === '.' && this.currentOperand.includes('.')) return
+        this.currentOperand = this.currentOperand.toString() + number.toString()
     }
 
     chosenOperation(operation){
-        if(currentTextElement === '') return
+        if(this.currentOperand === '') return
+        if(this.prevOperand !== ''){
+            this.compute()
+        } 
         this.operation = operation
-        this.prevTextElement = currentTextElement
-        this.currentTextElement = ''
+        this.prevOperand = this.currentOperand
+        this.currentOperand = ''
 
     }
 
@@ -63,17 +98,17 @@ opButtons.forEach(button =>{
     })
 })
 
-equalsButton.addEventListener('click', ()=>{
+equalsButton.addEventListener('click', button =>{
     calc.compute()
     calc.updateDisplay()
 })
 
-clearButton.addEventListener('click', ()=>{
+clearButton.addEventListener('click', button =>{
     calc.clear()
     calc.updateDisplay()
 })
 
-delButton.addEventListener('click', ()=>{
+delButton.addEventListener('click', button =>{
     calc.delete()
     calc.updateDisplay()
 })
