@@ -6,30 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calculator</title>
     <link rel="stylesheet" href="style.css">
-    <script src="file.js"></script>
+    <script src="file.js" defer></script>
 </head>
 
 <body>
     <div class="calculator">
         <div class="output">
-            <div class="prev"></div>
-            <div class="curr"></div>
+            <div data-prev class="prev"></div>
+            <div data-curr class="curr"></div>
         </div>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>+</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>-</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>&#215;</button>
-        <button>=</button>
-        <button>0</button>
-        <button>.</button>
+        <button data-number>1</button>
+        <button data-number>2</button>
+        <button data-number>3</button>
+        <button data-operation>+</button>
+        <button data-number>4</button>
+        <button data-number>5</button>
+        <button data-number>6</button>
+        <button data-operation>-</button>
+        <button data-number>7</button>
+        <button data-number>8</button>
+        <button data-number>9</button>
+        <button data-operation>&#215;</button>
+        <button data-equals>=</button>
+        <button data-number>0</button>
+        <button data-number>.</button>
+        <button data-operation>&#xf7;</button>
+        <button data-clear>AC</button>
+        <button data-delete>DE</button>
+        <button data-ans>ANS</button>
+        <button data-operation>^</button>
 
     </div>
 </body>
